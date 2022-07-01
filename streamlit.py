@@ -181,6 +181,6 @@ if __name__ == "__main__":
     # eval_list = ["BLEU_1", "BLEU_2", "BLEU_3", "BLEU_4", "METEOR", "ROUGE_L", "CIDEr"]
     eval_list = ["BLEU_4", "METEOR", "ROUGE_L", "CIDEr"]
     checkpoint_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 40, 50, 100, 200, 300, 400, 500, 1000, 2000, 4000, 6000, 8000, 10000]
-    groundtruth_all = json.load(open("data/test_videodatainfo.json"))
+    groundtruth_all = json.load(open("deploy_data/json/test_videodatainfo.json"))
 
     main()
