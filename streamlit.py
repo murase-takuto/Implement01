@@ -3,7 +3,7 @@ import json
 import pandas as pd
 
 def get_results(epoch) -> dict:
-    results = json.load(open("deploy_data/json/results/gru/model_" + str(epoch) + ".json"))
+    results = json.load(open("deploy_data/json/result/gru/model_" + str(epoch) + ".json"))
     return results
 
 def get_caption(epoch, video_id) -> str:
@@ -31,7 +31,7 @@ def get_caption_and_score_list(video_id):
     caption_list = []
     score_list = []
     for c in checkpoint_list :
-        j = json.load(open("deploy_data/json/results/gru/model_" + str(c) + ".json"))
+        j = json.load(open("deploy_data/json/result/gru/model_" + str(c) + ".json"))
         caption = j["predictions"][video_id][0]["caption"]
         caption_list.append(caption)
         score = list(j["scores"].values())

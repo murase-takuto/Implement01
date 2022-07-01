@@ -2,9 +2,11 @@ feats/
 save*/
 results/
 # *video*
-*.json
 *.ipynb
 .vscode
+data/caption.json
+data/info.json
+data/test_videodatainfo.json
 
 !deploy_data/
 data/test_videos
