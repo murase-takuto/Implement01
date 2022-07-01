@@ -8,7 +8,9 @@ class COCOScorer is taken from https://github.com/yaoli/arctic-capgen-vid
 import json
 import os
 import sys
-sys.path.append('coco-caption')
+
+# sys.path.append('coco-caption')
+# sys.path.append('/home/arailab-pc/Research/video-caption.pytorch/coco-caption')
 
 from pycocoevalcap.bleu.bleu import Bleu
 from pycocoevalcap.rouge.rouge import Rouge

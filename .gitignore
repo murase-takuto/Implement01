@@ -1,9 +1,14 @@
 feats/
 save*/
 results/
-*video*
+# *video*
 *.json
 *.ipynb
+.vscode
+
+!deploy_data/
+data/test_videos
+data/train_val_videos
 
 !scripts/*.py
 

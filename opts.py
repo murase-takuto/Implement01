@@ -7,7 +7,7 @@ def parse_opt():
     parser.add_argument(
         '--input_json',
         type=str,
-        default='data/videodatainfo_2017.json',
+        default='data/train_val_annotation/train_val_videodatainfo.json',
         help='path to the json file containing video info')
     parser.add_argument(
         '--info_json',
@@ -19,29 +19,24 @@ def parse_opt():
         type=str,
         default='data/caption.json',
         help='path to the processed video caption json')
-
     parser.add_argument(
         '--feats_dir',
         nargs='*',
         type=str,
         default=['data/feats/resnet152/'],
         help='path to the directory containing the preprocessed fc feats')
-
     parser.add_argument('--c3d_feats_dir', type=str, default='data/c3d_feats')
     parser.add_argument(
         '--with_c3d', type=int, default=0, help='whether to use c3d features')
-
     parser.add_argument(
         '--cached_tokens',
         type=str,
         default='msr-all-idxs',
-        help='Cached token file for calculating cider score \
-                        during self critical training.')
+        help='Cached token file for calculating cider score during self critical training.')
 
     # Model settings
     parser.add_argument(
         "--model", type=str, default='S2VTModel', help="with model to use")
-
     parser.add_argument(
         "--max_len",
         type=int,
@@ -52,7 +47,6 @@ def parse_opt():
         type=int,
         default=0,
         help="0 for disable, 1 for enable. encoder/decoder bidirectional.")
-
     parser.add_argument(
         '--dim_hidden',
         type=int,
@@ -78,7 +72,6 @@ def parse_opt():
         default=512,
         help='the encoding size of each token in the vocabulary, and the video.'
     )
-
     parser.add_argument(
         '--dim_vid',
         type=int,
@@ -86,7 +79,6 @@ def parse_opt():
         help='dim of features of video frames')
 
     # Optimization: General
-
     parser.add_argument(
         '--epochs', type=int, default=6001, help='number of epochs')
     parser.add_argument(
@@ -96,18 +88,14 @@ def parse_opt():
         type=float,
         default=5,  # 5.,
         help='clip gradients at this value')
-
     parser.add_argument(
         '--self_crit_after',
         type=int,
         default=-1,
-        help='After what epoch do we start finetuning the CNN? \
-                        (-1 = disable; never finetune, 0 = finetune from start)'
+        help='After what epoch do we start finetuning the CNN? (-1 = disable; never finetune, 0 = finetune from start)'
     )
-
     parser.add_argument(
         '--learning_rate', type=float, default=4e-4, help='learning rate')
-
     parser.add_argument(
         '--learning_rate_decay_every',
         type=int,
@@ -128,7 +116,6 @@ def parse_opt():
         type=float,
         default=5e-4,
         help='weight_decay. strength of weight regularization')
-
     parser.add_argument(
         '--save_checkpoint_every',
         type=int,
@@ -139,10 +126,7 @@ def parse_opt():
         type=str,
         default='save',
         help='directory to store checkpointed models')
-
-    parser.add_argument(
-        '--gpu', type=str, default='0', help='gpu device number')
-
+    # parser.add_argument('--gpu', type=str, default='0', help='gpu device number')
     args = parser.parse_args()
 
     return args

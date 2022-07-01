@@ -21,8 +21,8 @@ def build_vocab(vids, params):
     print('number of bad words: %d/%d = %.2f%%' %
           (len(bad_words), len(counts), len(bad_words) * 100.0 / len(counts)))
     print('number of words in vocab would be %d' % (len(vocab), ))
-    print('number of UNKs: %d/%d = %.2f%%' %
-          (bad_count, total_words, bad_count * 100.0 / total_words))
+    print('number of UNKs: %d/%d = %.2f%%' % (bad_count, total_words, bad_count * 100.0 / total_words))
+
     # lets now produce the final annotations
     if bad_count > 0:
         # additional special UNK token we will use below to map infrequent words to
@@ -60,8 +60,13 @@ def main(params):
     out['word_to_ix'] = wtoi
     out['videos'] = {'train': [], 'val': [], 'test': []}
     videos = json.load(open(params['input_json'], 'r'))['videos']
+
     for i in videos:
-        out['videos'][i['split']].append(int(i['id']))
+        try:
+            out['videos'][i['split']].append(int(i['id']))
+        except Exception as e:
+            print(e)
+
     json.dump(out, open(params['info_json'], 'w'))
     json.dump(video_caption, open(params['caption_json'], 'w'))
 
@@ -70,7 +75,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # input json
-    parser.add_argument('--input_json', type=str, default='data/videodatainfo_2017.json',
+    parser.add_argument('--input_json', type=str, default='data/train_val_annotation/train_val_videodatainfo.json',
                         help='msr_vtt videoinfo json')
     parser.add_argument('--info_json', default='data/info.json',
                         help='info about iw2word and word2ix')

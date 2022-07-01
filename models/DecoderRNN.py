@@ -156,8 +156,7 @@ class DecoderRNN(nn.Module):
         if encoder_hidden is None:
             return None
         if isinstance(encoder_hidden, tuple):
-            encoder_hidden = tuple(
-                [self._cat_directions(h) for h in encoder_hidden])
+            encoder_hidden = tuple([self._cat_directions(h) for h in encoder_hidden])
         else:
             encoder_hidden = self._cat_directions(encoder_hidden)
         return encoder_hidden

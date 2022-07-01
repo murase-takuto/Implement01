@@ -5,9 +5,8 @@ class EncoderRNN(nn.Module):
     def __init__(self, dim_vid, dim_hidden, input_dropout_p=0.2, rnn_dropout_p=0.5,
                  n_layers=1, bidirectional=False, rnn_cell='gru'):
         """
-
         Args:
-            hidden_dim (int): dim of hidden state of rnn
+            hidden_dim (int): dim of hidden state of rnn 隠れ状態の次元
             input_dropout_p (int): dropout probability for the input sequence
             dropout_p (float): dropout probability for the output sequence
             n_layers (int): number of rnn layers
@@ -31,7 +30,7 @@ class EncoderRNN(nn.Module):
             self.rnn_cell = nn.GRU
 
         self.rnn = self.rnn_cell(dim_hidden, dim_hidden, n_layers, batch_first=True,
-                                bidirectional=bidirectional, dropout=self.rnn_dropout_p)
+                                bidirectional=bool(bidirectional), dropout=self.rnn_dropout_p)
 
         self._init_hidden()
 
